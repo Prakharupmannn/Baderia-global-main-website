@@ -1,0 +1,61 @@
+export default function sitemap() {
+  const baseUrl = "https://www.globalengineeringcollege.com";
+  
+  const routes = [
+    "",
+    "/about",
+    "/about/vision-mission",
+    "/about/leadership",
+    "/about/governing-body",
+    "/about/affiliations",
+    "/about/achievements",
+    "/academics",
+    "/academics/courses",
+    "/departments/computer-science",
+    "/departments/aiml",
+    "/departments/cyber-security",
+    "/departments/data-science",
+    "/departments/civil-engineering",
+    "/departments/mechanical-engineering",
+    "/departments/electronics-communication",
+    "/departments/mba",
+    "/departments/mba-hospital-admin",
+    "/departments/polytechnic",
+    "/departments/applied-science",
+    "/faculty",
+    "/admissions",
+    "/admissions/eligibility",
+    "/admissions/fees",
+    "/admissions/apply",
+    "/admissions/education-loan",
+    "/admissions/faqs",
+    "/placements",
+    "/placements/statistics",
+    "/placements/recruiters",
+    "/placements/team",
+    "/placements/training",
+    "/campus",
+    "/campus/library",
+    "/campus/laboratories",
+    "/campus/ncc",
+    "/campus/sports",
+    "/campus/cafeteria",
+    "/campus/transport",
+    "/campus/hostel",
+    "/events",
+    "/events/global-garba",
+    "/events/umang-fest",
+    "/gallery",
+    "/mandatory-disclosures",
+    "/student-support/grievance",
+    "/downloads",
+    "/contact"
+  ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: route === "" ? "daily" : "weekly",
+    priority: route === "" ? 1.0 : route.startsWith("/admissions") || route.startsWith("/departments") ? 0.8 : 0.7
+  }));
+}

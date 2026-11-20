@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" fill="none" className="w-full h-auto">
+  <!-- Crest Emblem -->
+  <g transform="translate(10, 5)">
+    <!-- Outer Shield / Circle with White & Gold ring -->
+    <circle cx="45" cy="45" r="43" fill="#FFFFFF" stroke="#C5A15B" stroke-width="2.5"/>
+    <circle cx="45" cy="45" r="38" fill="#720D27" stroke="#FAF8F8" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <!-- Sunburst / Rays of Knowledge -->
+    <path d="M45 12 L45 22 M45 78 L45 68 M12 45 L22 45 M78 45 L68 45 M22 22 L29 29 M68 68 L61 61 M22 68 L29 61 M68 22 L61 29" stroke="#C5A15B" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Open Book / Wisdom -->
+    <path d="M30 54 Q45 50 45 42 Q45 50 60 54 L60 62 Q45 58 45 50 Q45 58 30 62 Z" fill="#FAF8F8" stroke="#C5A15B" stroke-width="1.2"/>
+    <path d="M45 42 L45 50" stroke="#720D27" stroke-width="1.5"/>
+
+    <!-- Cogwheel / Engineering Gear -->
+    <circle cx="45" cy="34" r="9" fill="none" stroke="#C5A15B" stroke-width="2.5" stroke-dasharray="3,2"/>
+    <circle cx="45" cy="34" r="5" fill="#FAF8F8"/>
+
+    <!-- Torch Flame / Energy of Innovation -->
+    <path d="M45 24 C43 27, 41 29, 43 32 C45 34, 47 32, 47 29 C48 27, 46 25, 45 24 Z" fill="#C5A15B"/>
+    
+    <!-- Academic Laurel / Leaves -->
+    <path d="M19 45 C19 58 29 68 45 70 C61 70 71 58 71 45" fill="none" stroke="#C5A15B" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(108, 0)">
+    <!-- Subtitle / Society Brand -->
+    <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="10.5" font-weight="700" letter-spacing="2.5" fill="#DFC285" text-transform="uppercase">
+      BADERIA GROUP OF INSTITUTIONS
+    </text>
+    
+    <!-- Primary College Name -->
+    <text x="0" y="52" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="24" font-weight="900" letter-spacing="0.5" fill="#FFFFFF">
+      GLOBAL
+    </text>
+    <text x="108" y="52" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" letter-spacing="0.5" fill="#F9EDEF">
+      ENGINEERING COLLEGE
+    </text>
+
+    <!-- Accreditation & Affiliation Tagline -->
+    <text x="0" y="72" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="500" letter-spacing="0.8" fill="#E2DCDA">
+      Baderia Global Institute of Engineering &amp; Management • Jabalpur (M.P.)
+    </text>
+    <text x="0" y="86" font-family="system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="500" letter-spacing="0.4" fill="#DFC285">
+      Approved by AICTE New Delhi • Affiliated to RGPV Bhopal &amp; RDVV Jabalpur
+    </text>
+  </g>
+</svg>
