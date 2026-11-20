@@ -26,12 +26,14 @@ export default function ApplyPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [refId, setRefId] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      setRefId("BGIEM-2026-" + Math.floor(100000 + Math.random() * 900000));
       setSubmitted(true);
     }, 700);
   };
@@ -60,7 +62,7 @@ export default function ApplyPage() {
                 Admission Application Received!
               </h2>
               <div className="inline-block bg-[#F9EDEF] text-[#A30D2D] px-4 py-1.5 rounded-full text-xs font-mono font-bold">
-                Application Ref: BGIEM-2026-{Math.floor(100000 + Math.random() * 900000)}
+                Application Ref: {refId || "BGIEM-2026-849102"}
               </div>
               <p className="text-xs sm:text-sm text-gray-700 leading-relaxed max-w-lg mx-auto">
                 Dear <strong>{formData.fullName}</strong>, thank you for choosing Baderia Global Engineering College. Your preference for <strong>{formData.preferredBranch}</strong> has been logged. Our Senior Counselor will call you at <strong>{formData.phone}</strong> with counseling and choice-filling guidelines.

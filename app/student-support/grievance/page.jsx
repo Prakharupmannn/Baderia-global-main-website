@@ -21,12 +21,14 @@ export default function GrievancePage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [refId, setRefId] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
+      setRefId("GRV-2026-" + Math.floor(1000 + Math.random() * 9000));
       setSubmitted(true);
     }, 600);
   };
@@ -108,7 +110,7 @@ export default function GrievancePage() {
                     Grievance Registered Successfully
                   </h4>
                   <p className="text-xs text-gray-600 leading-relaxed">
-                    Your grievance has been logged with reference ID: <strong>GRV-2026-{Math.floor(1000 + Math.random() * 9000)}</strong>. The committee will examine your request and follow up within 3 working days.
+                    Your grievance has been logged with reference ID: <strong>{refId || "GRV-2026-4819"}</strong>. The committee will examine your request and follow up within 3 working days.
                   </p>
                   <button
                     onClick={() => {
