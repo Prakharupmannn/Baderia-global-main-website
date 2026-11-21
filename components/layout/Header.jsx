@@ -151,7 +151,7 @@ export default function Header() {
           )}
         </Link>
 
-                {/* MEGA MENU */}
+        {/* MEGA MENU */}
         {isMega && (
           <div
             className={`bgi-dropdown bgi-mega-dropdown ${alignRight ? "align-right" : ""} ${
@@ -251,7 +251,9 @@ export default function Header() {
                       <span>
                         {sub.name}
                         {sub.desc && (
-                          <small className="bgi-dropdown-desc">{sub.desc}</small>
+                          <small className="bgi-dropdown-desc">
+                            {sub.desc}
+                          </small>
                         )}
                       </span>
                     </span>
@@ -331,30 +333,35 @@ export default function Header() {
         }
 
         .bgi-logo-wrap {
-          width: 80px;
+          width: 68px;
           height: 68px;
+          min-width: 68px;
           flex-shrink: 0;
-          border-radius: 50%;
+
           display: flex;
           align-items: center;
           justify-content: center;
 
+          border-radius: 50%;
+          overflow: hidden;
+          padding: 3px;
+
           background: #fff;
-          box-shadow: 0 4px 12px rgba(138, 10, 34, 0.1);
+          border: 2px solid var(--bgi-gold);
+
+          box-shadow: 0 4px 12px rgba(138, 10, 34, 0.15);
+
           transition:
             transform 0.3s ease,
             box-shadow 0.3s ease;
         }
 
-        .bgi-brand:hover .bgi-logo-wrap {
-          transform: scale(1.04);
-          box-shadow: 0 7px 18px rgba(138, 10, 34, 0.18);
-        }
-
         .bgi-logo {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          display: block;
+          border-radius: 50%;
+          object-fit: cover;
         }
 
         .bgi-brand-text {
@@ -1233,6 +1240,68 @@ export default function Header() {
             transition: none !important;
           }
         }
+
+
+/* =========================================
+   BRAND ENTRANCE ANIMATION
+========================================= */
+
+@keyframes bgi-slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-65px);
+    filter: blur(4px);
+  }
+
+  70% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+/* College Logo */
+.bgi-logo-wrap {
+  animation: bgi-slide-in-left 0.85s
+    cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+/* BADERIA GROUP - Estd. 2002 */
+.bgi-brand-top {
+  animation: bgi-slide-in-left 0.75s
+    cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+/* GLOBAL ENGINEERING COLLEGE */
+.bgi-brand-name {
+  animation: bgi-slide-in-left 0.8s
+    cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+/* Institute Name and Affiliations */
+.bgi-brand-sub {
+  animation: bgi-slide-in-left 0.8s
+    cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .bgi-logo-wrap,
+  .bgi-brand-top,
+  .bgi-brand-name,
+  .bgi-brand-sub {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
       `}</style>
 
       <header
@@ -1241,40 +1310,52 @@ export default function Header() {
         onMouseLeave={closeDropdown}
       >
         <div className="bgi-inner">
-          {/* BRAND */}
-          <Link href="/" className="bgi-brand">
-            <div className="bgi-logo-wrap">
-              <Image
-                src="/images/logo1.png"
-                alt="Baderia Global Engineering College"
-                width={65}
-                height={65}
-                priority
-                className="bgi-logo"
-              />
-            </div>
+          
+{/* BRAND */}
+<Link href="/" className="bgi-brand">
 
-            <div className="bgi-brand-text">
-              <div className="bgi-brand-top">
-                BADERIA GROUP
-                <i />
-                <span style={{ color: "#77727a" }}>Estd. 2002</span>
-              </div>
+  {/* Animated Logo */}
+  <div className="bgi-logo-wrap">
+    <Image
+      src="/images/logo1.png"
+      alt="Baderia Global Engineering College"
+      width={65}
+      height={65}
+      priority
+      className="bgi-logo"
+    />
+  </div>
 
-              <div className="bgi-brand-name">
-                <strong>GLOBAL</strong>
-                <span>ENGINEERING COLLEGE</span>
-              </div>
+  {/* Animated Brand Details */}
+  <div className="bgi-brand-text">
 
-              <div className="bgi-brand-sub">
-                Baderia Global Institute of Engg. &amp; Mgmt.
-                <span className="bgi-brand-affiliation">
-                  {" "}
-                  • AICTE • RGPV • RDVV
-                </span>
-              </div>
-            </div>
-          </Link>
+    {/* First: Group Name */}
+    <div className="bgi-brand-top">
+      <span>BADERIA GROUP</span>
+      <i />
+      <span style={{ color: "#77727a" }}>
+        Estd. 2002
+      </span>
+    </div>
+
+    {/* Second: College Name */}
+    <div className="bgi-brand-name">
+      <strong>GLOBAL</strong>
+      <span>ENGINEERING COLLEGE</span>
+    </div>
+
+    {/* Third: Institute and Affiliations */}
+    <div className="bgi-brand-sub">
+      Baderia Global Institute of Engg. &amp; Mgmt.
+
+      <span className="bgi-brand-affiliation">
+        {" "}• AICTE • RGPV • RDVV
+      </span>
+    </div>
+
+  </div>
+</Link>
+
 
           {/* DESKTOP NAVIGATION */}
           <div className="bgi-nav-area">
