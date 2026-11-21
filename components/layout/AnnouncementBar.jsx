@@ -1,80 +1,144 @@
+
 "use client";
 
 import Link from "next/link";
-import { Phone, Mail, MapPin, Bell, Sparkles, ArrowRight } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Bell,
+  Sparkles,
+  ArrowRight,
+  GraduationCap,
+} from "lucide-react";
 import { collegeData } from "@/lib/data/collegeData";
+
+const announcements = [
+  {
+    label: "ADMISSIONS 2026-27",
+    text: "B.Tech • M.Tech • MBA • Polytechnic — DTE MP Counseling & CLC Open",
+    link: "/admissions/apply",
+    action: "Apply Online",
+  },
+  {
+    label: "IMPORTANT UPDATE",
+    text: "Admissions Open for the Academic Session 2026-27",
+    link: "/admissions/apply",
+    action: "Explore Programs",
+  },
+  {
+    label: "STUDENT SUPPORT",
+    text: "Have a concern? Our Grievance Cell is here to help you",
+    link: "/student-support/grievance",
+    action: "Learn More",
+  },
+];
 
 export default function AnnouncementBar() {
   return (
-    <div className="bg-[#720D27] text-white text-xs border-b border-[#A30D2D]/40 relative z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between py-2 gap-2">
-          
-          {/* Left: Live Announcement */}
-          <div className="flex items-center gap-2 overflow-hidden w-full md:w-auto">
-            <span className="inline-flex items-center gap-1 bg-[#A30D2D] text-[#C5A15B] font-semibold px-2.5 py-0.5 rounded-full text-[11px] tracking-wide shrink-0 animate-pulse">
-              <Sparkles className="w-3 h-3 text-[#C5A15B]" />
-              ADMISSIONS 2026-27
-            </span>
-            <div className="truncate text-white/90 font-medium text-[11px] sm:text-xs">
-              <span>B.Tech • M.Tech • MBA • Polytechnic — DTE MP Counseling &amp; CLC Open</span>
-            </div>
-            <Link 
-              href="/admissions/apply" 
-              className="text-[#C5A15B] hover:text-white underline font-semibold flex items-center gap-0.5 text-[11px] shrink-0 ml-1 transition-colors"
-            >
-              Apply Online <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
+    <div className="announcement-bar relative z-50 overflow-hidden text-white">
 
-          {/* Right: Quick Contacts & Portals */}
-          <div className="flex items-center gap-4 text-white/80 text-[11px] sm:text-xs shrink-0">
-            <a 
-              href={`tel:${collegeData.contact.phones[0]}`} 
-              className="hidden sm:flex items-center gap-1.5 hover:text-[#C5A15B] transition-colors"
-            >
-              <Phone className="w-3 h-3 text-[#C5A15B]" />
-              <span>{collegeData.contact.phones[0]}</span>
-            </a>
+      {/* Decorative background */}
+      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#57091D] via-[#80112F] to-[#57091D]" />
 
-            <span className="hidden sm:inline text-white/30">•</span>
+      <div className="relative max-w-[1600px] mx-auto flex items-center min-h-[42px]">
 
-            <a 
-              href={`mailto:${collegeData.contact.emails.admissions}`} 
-              className="hidden lg:flex items-center gap-1.5 hover:text-[#C5A15B] transition-colors"
-            >
-              <Mail className="w-3 h-3 text-[#C5A15B]" />
-              <span>{collegeData.contact.emails.admissions}</span>
-            </a>
+        {/* Fixed announcement label */}
+        <div className="relative z-20 shrink-0 flex items-center gap-2 px-3 sm:px-5 h-[42px] bg-gradient-to-r from-[#A30D2D] to-[#850D29] border-r border-[#C5A15B]/40 shadow-lg">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E8C77D] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E8C77D]" />
+          </span>
 
-            <span className="hidden lg:inline text-white/30">•</span>
+          <Bell className="w-3.5 h-3.5 text-[#E8C77D]" />
 
-            <div className="flex items-center gap-3">
-              <Link 
-                href="/student-support/grievance" 
-                className="hover:text-[#C5A15B] transition-colors font-medium"
-              >
-                Grievance Cell
-              </Link>
-              <span className="text-white/30">•</span>
-              <Link 
-                href="/mandatory-disclosures" 
-                className="hover:text-[#C5A15B] transition-colors font-medium"
-              >
-                AICTE Disclosures
-              </Link>
-              <span className="text-white/30">•</span>
-              <Link 
-                href="/contact" 
-                className="hover:text-[#C5A15B] transition-colors font-medium text-[#C5A15B]"
-              >
-                Campus Map
-              </Link>
-            </div>
-          </div>
-
+          <span className="text-[10px] sm:text-[11px] font-bold tracking-[1.2px] whitespace-nowrap">
+            LATEST UPDATES
+          </span>
         </div>
+
+        {/* Scrolling announcements */}
+        <div className="flex-1 min-w-0 overflow-hidden group">
+
+          <div className="announcement-track flex items-center w-max group-hover:[animation-play-state:paused]">
+
+            {[...announcements, ...announcements].map((item, index) => (
+              <div
+                key={index}
+                className="flex items-center shrink-0 gap-3 sm:gap-4 px-5 sm:px-8"
+              >
+                <span className="flex items-center gap-1.5 text-[#E8C77D] font-bold text-[10px] sm:text-[11px] tracking-wider whitespace-nowrap">
+                  <Sparkles className="w-3 h-3" />
+                  {item.label}
+                </span>
+
+                <span className="w-1 h-1 rounded-full bg-[#C5A15B]" />
+
+                <span className="text-[11px] sm:text-xs font-medium text-white/95 whitespace-nowrap">
+                  {item.text}
+                </span>
+
+                <Link
+                  href={item.link}
+                  className="inline-flex items-center gap-1 text-[#E8C77D] hover:text-white font-bold text-[10px] sm:text-[11px] whitespace-nowrap transition-colors"
+                >
+                  {item.action}
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+
+                <span className="text-[#C5A15B]/40 ml-2">✦</span>
+              </div>
+            ))}
+
+          </div>
+        </div>
+
+        {/* Fixed contact section - desktop */}
+        <div className="hidden xl:flex relative z-20 shrink-0 items-center gap-4 px-5 h-[42px] bg-[#650C24] border-l border-[#C5A15B]/30 text-[11px]">
+
+          <a
+            href={`tel:${collegeData.contact.phones[0]}`}
+            className="flex items-center gap-1.5 text-white/85 hover:text-[#E8C77D] transition-colors"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#E8C77D]" />
+            {collegeData.contact.phones[0]}
+          </a>
+
+          <span className="text-white/25">|</span>
+
+          <a
+            href={`mailto:${collegeData.contact.emails.admissions}`}
+            className="flex items-center gap-1.5 text-white/85 hover:text-[#E8C77D] transition-colors"
+          >
+            <Mail className="w-3.5 h-3.5 text-[#E8C77D]" />
+            Admissions
+          </a>
+        </div>
+
       </div>
+
+      <style jsx>{`
+        .announcement-track {
+          animation: announcement-scroll 35s linear infinite;
+          will-change: transform;
+        }
+
+        @keyframes announcement-scroll {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .announcement-track {
+            animation: none;
+          }
+        }
+      `}</style>
+
     </div>
   );
 }
